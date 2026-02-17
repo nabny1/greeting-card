@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>تهنئة | شركة نبني المحدودة</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -14,85 +13,93 @@
 body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
-    padding: 15px;
+    padding: 0;
     background: linear-gradient(to bottom right, #e0e0e0, #cfcfcf);
     direction: rtl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
     background-color: #4a554f;
-    padding: 20px;
-    border-radius: 18px;
-    max-width: 520px;
-    margin: auto;
+    padding: 35px 25px;
+    border-radius: 25px;
+    max-width: 480px;
+    width: 95%;
     color: #fff;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
 .logo {
-    width: 160px;
-    max-width: 90%;
-    margin-bottom: 15px;
+    max-width: 180px;
+    margin-bottom: 25px;
 }
 
 h2 {
-    font-size: 16px;
-    margin: 10px 0;
+    font-size: 18px;
+    margin: 15px 0 10px;
+    font-weight: 700;
 }
 
-select, input {
+select, input[type="text"] {
     width: 100%;
     padding: 12px;
-    margin: 8px 0 12px;
-    border-radius: 10px;
+    margin: 10px 0 15px;
+    border-radius: 12px;
     border: none;
     font-size: 16px;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 8px;
     background: #ffffff;
     color: #4a554f;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
-/* ✅ متجاوب بنسبة سناب */
+/* ✅ نفس الشكل — لكن مقاس سناب متجاوب */
 .preview {
     position: relative;
+    margin: 30px auto 0;
     width: 100%;
-    aspect-ratio: 9 / 16;
-    margin-top: 20px;
+    max-width: 360px;
+    aspect-ratio: 9 / 16;   /* مقاس سناب */
+    border-radius: 0;        /* بدون تقويس */
     overflow: hidden;
-    background: #000;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    background: transparent; /* بدون أطراف بيضاء */
 }
 
 .preview img {
-    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    border-radius: 0;
 }
 
-/* ✅ الاسم بدون تغيير تنسيقه */
-.name-text {
+.preview .name-text {
     position: absolute;
-    bottom: 28%;
+    bottom: 35%;
     width: 100%;
     text-align: center;
-    font-size: 5vw; /* متجاوب للجوال */
+    font-size: 20px;
+    font-weight: 400;
     color: #fff;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.75);
 }
 
-@media (min-width: 600px) {
-    .name-text {
-        font-size: 24px;
+@media (max-width: 480px) {
+    .preview .name-text {
+        font-size: 5vw;
     }
 }
 
@@ -110,7 +117,7 @@ button {
 <option value="" disabled selected>-- اختر المناسبة --</option>
 <option value="ramadan">رمضان</option>
 <option value="national">اليوم الوطني</option>
-<option value="founding">يوم التأسيس</option>
+<option value="founding">يوم التأسيس السعودي</option>
 </select>
 
 <h2>اختر القالب</h2>
@@ -120,13 +127,15 @@ button {
 <option value="template2">قالب 2</option>
 </select>
 
-<h2>اكتب الاسم</h2>
+<h2>اكتب اسمك</h2>
 <input type="text" id="userName">
 
 <button onclick="generateCard()">عرض التهنئة</button>
 <button onclick="downloadCard()">تحميل التهنئة</button>
 
-<div class="preview" id="preview"></div>
+<div class="preview" id="preview">
+<div class="name-text"></div>
+</div>
 
 </div>
 
@@ -149,29 +158,29 @@ template2: 'images/founding2.png'
 
 function generateCard() {
 
-const o = occasion.value;
-const t = template.value;
-const n = userName.value.trim();
+const occasion = document.getElementById('occasion').value;
+const template = document.getElementById('template').value;
+const name = document.getElementById('userName').value.trim();
 
-if (!o || !t || !n) {
-alert("اختاري المناسبة والقالب واكتبي الاسم");
+if(!occasion || !template || !name) {
+alert('يرجى اختيار المناسبة والقالب وكتابة الاسم');
 return;
 }
 
 preview.innerHTML =
-`<img src="${templates[o][t]}">
-<div class="name-text">${n}</div>`;
+`<img src="${templates[occasion][template]}">
+<div class="name-text">${name}</div>`;
 }
 
 function downloadCard() {
 
 html2canvas(preview, {
-scale: 3,
-useCORS: true
+useCORS: true,
+scale: 3
 }).then(canvas => {
 
-const link = document.createElement("a");
-link.download = "card.png";
+const link = document.createElement('a');
+link.download = 'تهنئة.png';
 link.href = canvas.toDataURL();
 link.click();
 
