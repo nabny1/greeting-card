@@ -145,7 +145,6 @@ button:hover {
         <option value="" disabled selected>-- اختر القالب --</option>
         <option value="template1">قالب 1</option>
         <option value="template2">قالب 2</option>
-       
     </select>
 
     <h2>اكتب اسمك</h2>
@@ -164,12 +163,10 @@ const templates = {
     ramadan: {
         template1: 'images/ramadan1.png',
         template2: 'images/ramadan2.png'
-      
     },
     national: {
         template1: 'images/national1.png',
         template2: 'images/national2.png'
-        
     },
     founding: {
         template1: 'images/founding1.png',
@@ -188,20 +185,21 @@ function generateCard() {
     }
 
     const preview = document.getElementById('preview');
-    preview.innerHTML = `<img src="${templates[occasion][template]}" alt="Template">` +
+    preview.innerHTML = `<img src="${templates[occasion][template]}" crossOrigin="anonymous" alt="Template">` +
                         `<div class="name-text">${name}</div>`;
 }
 
 function downloadCard() {
     const preview = document.getElementById('preview');
 
-    html2canvas(preview, {useCORS: true, scale: 2}).then(canvas => {
-        canvas.toBlob(function(blob) {
-            const link = document.createElement('a');
-            link.download = 'تهنئة.png';
-            link.href = URL.createObjectURL(blob);
-            link.click();
-        });
+    html2canvas(preview, {useCORS: true, scale: 2, allowTaint: true}).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'تهنئة.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    }).catch(err => {
+        alert('حدث خطأ أثناء توليد الصورة. تأكد من تشغيل المشروع على خادم محلي.');
+        console.error(err);
     });
 }
 </script>
