@@ -3,205 +3,351 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تهنئة | شركة نبني المحدودة</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<title>كروت تهنئة شركة نبني</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
 <style>
-body {
-    font-family: 'Cairo', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom right, #e0e0e0, #cfcfcf);
-    direction: rtl;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
+body{
+margin:0;
+font-family:Cairo;
+background:#3d4943;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-.container {
-    background-color: #4a554f;
-    padding: 35px 25px;
-    border-radius: 25px;
-    max-width: 480px;
-    width: 95%;
-    color: #fff;
-    text-align: center;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+header{
+color:white;
+font-size:30px;
+font-weight:900;
+padding:20px;
 }
 
-.container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.5);
+.layout{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+max-width:1300px;
+width:100%;
 }
 
-.logo {
-    max-width: 180px;
-    margin-bottom: 25px;
-    transition: transform 0.3s ease;
+.panel{
+background:white;
+border-radius:18px;
+padding:18px;
+width:300px;
+box-shadow:0 20px 40px rgba(0,0,0,.35);
 }
 
-.logo:hover {
-    transform: scale(1.05);
+.panel h3{margin:0 0 12px;}
+
+.panel label{
+font-size:13px;
+color:#444;
+margin-bottom:6px;
+display:block;
 }
 
-h2 {
-    font-size: 18px;
-    margin: 15px 0 10px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+.panel input[type="text"],
+.panel select{
+width:100%;
+padding:11px;
+border-radius:12px;
+border:1px solid #dcdcdc;
+margin-bottom:14px;
+font-family:Cairo;
+background:#fafafa;
 }
 
-select, input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0 15px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    outline: none;
-    transition: box-shadow 0.3s, transform 0.2s;
+.panel input[type="range"]{
+width:100%;
+margin:8px 0 18px;
+appearance:none;
+height:6px;
+border-radius:10px;
+background:#e5e5e5;
 }
 
-select:focus, input:focus {
-    box-shadow: 0 0 12px rgba(255,255,255,0.7);
-    transform: scale(1.02);
+.panel input[type="range"]::-webkit-slider-thumb{
+appearance:none;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#111;
+cursor:pointer;
 }
 
-button {
-    background: linear-gradient(135deg, #ffffff, #f0f0f0);
-    color: #4a554f;
-    padding: 12px 22px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: transform 0.2s, box-shadow 0.3s;
+.boldRow{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:16px;
 }
 
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+.boldBtn{
+width:42px;height:42px;
+border-radius:10px;
+border:2px solid #ddd;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+font-size:18px;
+cursor:pointer;
+background:white;
 }
 
-.preview {
-    position: relative;
-    margin: 30px auto 0;
-    width: 320px;
-    height: 500px;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+.boldBtn.active{
+background:#111;color:white;border-color:#111;
 }
 
-.preview:hover {
-    transform: scale(1.02);
-    box-shadow: 0 16px 35px rgba(0,0,0,0.5);
+.panel button{
+width:100%;
+padding:12px;
+border:0;
+border-radius:12px;
+background:#111;
+color:white;
+font-weight:700;
+cursor:pointer;
+margin-top:8px;
 }
 
-.preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    border-radius: 25px;
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:15px;
 }
 
-.preview .name-text {
-    position: absolute;
-    bottom: 35%;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 400;
-    color: #fff;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.75);
+.grid img{
+width:100%;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 6px 16px rgba(0,0,0,.25);
+transition:.2s;
 }
+
+.grid img:hover{transform:scale(1.05);}
+
+/* preview */
+
+.previewShell{
+background:#1f2723;
+padding:18px;
+border-radius:24px;
+box-shadow:0 30px 60px rgba(0,0,0,.45);
+}
+
+.previewScale{
+width:520px;
+max-width:95vw;
+}
+
+.preview{
+position:relative;
+width:2000px;
+height:2000px;
+background:white;
+border-radius:24px;
+overflow:hidden;
+transform:scale(.26);
+transform-origin:top left;
+}
+
+.preview img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.nameText{
+position:absolute;
+top:1500px;
+left:1000px;
+transform:translate(-50%,-50%);
+font-size:110px;
+font-weight:700;
+color:white;
+text-shadow:0 6px 22px rgba(0,0,0,.8);
+cursor:move;
+padding:10px 18px;
+border-radius:12px;
+user-select:none;
+}
+
+.nameText.drag{
+outline:3px dashed white;
+background:rgba(0,0,0,.25);
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="container">
-    <img src="images/logo.png" alt="Logo" class="logo">
+<header>بطاقات التهنئة شركة نبني</header>
 
-    <h2>اختر المناسبة</h2>
-    <select id="occasion">
-        <option value="" disabled selected>-- اختر المناسبة --</option>
-        <option value="ramadan">رمضان</option>
-        <option value="national">اليوم الوطني</option>
-        <option value="founding">يوم التأسيس السعودي</option>
-    </select>
+<div class="layout">
 
-    <h2>اختر القالب</h2>
-    <select id="template">
-        <option value="" disabled selected>-- اختر القالب --</option>
-        <option value="template1">قالب 1</option>
-        <option value="template2">قالب 2</option>
-    </select>
+<div class="panel">
 
-    <h2>اكتب اسمك</h2>
-    <input type="text" id="userName" placeholder="اكتب الاسم هنا">
+<h3>الإعدادات</h3>
 
-    <button onclick="generateCard()">عرض التهنئة</button>
-    <button id="downloadBtn" onclick="downloadCard()">تحميل التهنئة</button>
+<label>المناسبة</label>
+<select id="occasionSelect"></select>
 
-    <div class="preview" id="preview">
-        <div class="name-text" id="nameText"></div>
-    </div>
+<label>القوالب</label>
+<div class="grid" id="grid"></div>
+
+<label>اسم الموظف</label>
+<input id="empName">
+
+<label>نوع الخط</label>
+<select id="fontSelect">
+<option>Cairo</option>
+<option>Tajawal</option>
+<option>Amiri</option>
+</select>
+
+<label>حجم الخط</label>
+<input type="range" id="fontSize" min="60" max="180" value="110">
+
+<label>لون الخط</label>
+<input type="color" id="fontColor" value="#ffffff">
+
+<div class="boldRow">
+<div id="boldBtn" class="boldBtn">B</div>
+<span>خط عريض</span>
+</div>
+
+<button onclick="resetPos()">إعادة تمركز الاسم</button>
+<button onclick="downloadCard()">تحميل البطاقة</button>
+
+</div>
+
+<div class="previewShell">
+<div class="previewScale">
+<div class="preview" id="preview">
+<img id="previewImg">
+<div id="nameText" class="nameText">اسم الموظف</div>
+</div>
+</div>
+</div>
+
 </div>
 
 <script>
-const templates = {
-    ramadan: {
-        template1: 'images/ramadan1.png',
-        template2: 'images/ramadan2.png'
-    },
-    national: {
-        template1: 'images/national1.png',
-        template2: 'images/national2.png'
-    },
-    founding: {
-        template1: 'images/founding1.png',
-        template2: 'images/founding2.png'
-    }
-};
 
-function generateCard() {
-    const occasion = document.getElementById('occasion').value;
-    const template = document.getElementById('template').value;
-    const name = document.getElementById('userName').value.trim();
+/* ===== المناسبات ===== */
 
-    if(!occasion || !template || !name) {
-        alert('يرجى اختيار المناسبة والقالب وكتابة الاسم');
-        return;
-    }
+const occasions = {
+"رمضان":[
+"templates/ramadan/1.jpg",
+"templates/ramadan/2.jpg",
+"templates/ramadan/3.jpg",
+"templates/ramadan/4.jpg"
+],
 
-    const preview = document.getElementById('preview');
-    preview.innerHTML = `<img src="${templates[occasion][template]}" crossOrigin="anonymous" alt="Template">` +
-                        `<div class="name-text">${name}</div>`;
+"يوم التأسيس":[
+"templates/foundation/1.jpg",
+"templates/foundation/2.jpg",
+"templates/foundation/3.jpg",
+"templates/foundation/4.jpg"
+],
+
+"العيد":[
+"templates/eid/1.jpg",
+"templates/eid/2.jpg",
+"templates/eid/3.jpg",
+"templates/eid/4.jpg"
+]
 }
 
-function downloadCard() {
-    const preview = document.getElementById('preview');
+/* ===== populate occasions ===== */
 
-    html2canvas(preview, {useCORS: true, scale: 2, allowTaint: true}).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'تهنئة.png';
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-    }).catch(err => {
-        alert('حدث خطأ أثناء توليد الصورة. تأكد من تشغيل المشروع على خادم محلي.');
-        console.error(err);
-    });
+occasionSelect.innerHTML =
+Object.keys(occasions)
+.map(o=>`<option>${o}</option>`).join("")
+
+occasionSelect.onchange=renderTemplates
+
+function renderTemplates(){
+grid.innerHTML=""
+occasions[occasionSelect.value].forEach(src=>{
+let i=document.createElement("img")
+i.src=src
+i.onclick=()=>previewImg.src=src
+grid.appendChild(i)
+})
 }
+
+renderTemplates()
+
+/* ===== controls ===== */
+
+empName.oninput=e=>nameText.textContent=e.target.value
+fontSelect.onchange=e=>nameText.style.fontFamily=e.target.value
+fontSize.oninput=e=>nameText.style.fontSize=e.target.value+"px"
+fontColor.oninput=e=>nameText.style.color=e.target.value
+
+boldBtn.onclick=()=>{
+boldBtn.classList.toggle("active")
+nameText.style.fontWeight=
+boldBtn.classList.contains("active")?900:400
+}
+
+function resetPos(){
+nameText.style.top="1500px"
+nameText.style.left="1000px"
+nameText.style.transform="translate(-50%,-50%)"
+}
+
+/* ===== drag ===== */
+
+let drag=false,ox,oy
+
+nameText.onmousedown=e=>{
+drag=true
+nameText.classList.add("drag")
+ox=e.offsetX
+oy=e.offsetY
+}
+
+window.onmousemove=e=>{
+if(!drag) return
+const rect=preview.getBoundingClientRect()
+const scale=rect.width/2000
+let x=(e.clientX-rect.left)/scale-ox
+let y=(e.clientY-rect.top)/scale-oy
+nameText.style.left=x+"px"
+nameText.style.top=y+"px"
+nameText.style.transform="none"
+}
+
+window.onmouseup=()=>{
+drag=false
+nameText.classList.remove("drag")
+}
+
+/* ===== export ===== */
+
+function downloadCard(){
+if(!previewImg.src){alert("اختر قالب");return}
+
+html2canvas(preview,{scale:1}).then(c=>{
+let a=document.createElement("a")
+a.download="card.png"
+a.href=c.toDataURL()
+a.click()
+})
+}
+
 </script>
 
 </body>
