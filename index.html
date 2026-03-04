@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>كروت تهنئة شركة نبني</title>
+<title>كروت تهنئة شركة نبني - ستوري سناب</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -135,7 +135,7 @@ transition:.2s;
 
 .grid img:hover{transform:scale(1.05);}
 
-/* preview */
+/* ===== preview ===== */
 
 .previewShell{
 background:#1f2723;
@@ -145,18 +145,18 @@ box-shadow:0 30px 60px rgba(0,0,0,.45);
 }
 
 .previewScale{
-width:520px;
+width:430px;
 max-width:95vw;
 }
 
 .preview{
 position:relative;
-width:2000px;
-height:2000px;
+width:1080px;
+height:1920px;
 background:white;
 border-radius:24px;
 overflow:hidden;
-transform:scale(.26);
+transform:scale(.4);
 transform-origin:top left;
 }
 
@@ -169,7 +169,7 @@ object-fit:cover;
 .nameText{
 position:absolute;
 top:1500px;
-left:1000px;
+left:540px;
 transform:translate(-50%,-50%);
 font-size:110px;
 font-weight:700;
@@ -191,7 +191,7 @@ background:rgba(0,0,0,.25);
 
 <body>
 
-<header>بطاقات التهنئة شركة نبني</header>
+<header>بطاقات التهنئة شركة نبني - ستوري سناب</header>
 
 <div class="layout">
 
@@ -253,14 +253,12 @@ const occasions = {
 "templates/ramadan/3.jpg",
 "templates/ramadan/4.jpg"
 ],
-
 "يوم التأسيس":[
 "templates/foundation/1.jpg",
 "templates/foundation/2.jpg",
 "templates/foundation/3.jpg",
 "templates/foundation/4.jpg"
 ],
-
 "العيد":[
 "templates/eid/1.jpg",
 "templates/eid/2.jpg",
@@ -268,8 +266,6 @@ const occasions = {
 "templates/eid/4.jpg"
 ]
 }
-
-/* ===== populate occasions ===== */
 
 occasionSelect.innerHTML =
 Object.keys(occasions)
@@ -304,7 +300,7 @@ boldBtn.classList.contains("active")?900:400
 
 function resetPos(){
 nameText.style.top="1500px"
-nameText.style.left="1000px"
+nameText.style.left="540px"
 nameText.style.transform="translate(-50%,-50%)"
 }
 
@@ -322,7 +318,7 @@ oy=e.offsetY
 window.onmousemove=e=>{
 if(!drag) return
 const rect=preview.getBoundingClientRect()
-const scale=rect.width/2000
+const scale=rect.width/1080
 let x=(e.clientX-rect.left)/scale-ox
 let y=(e.clientY-rect.top)/scale-oy
 nameText.style.left=x+"px"
@@ -340,10 +336,10 @@ nameText.classList.remove("drag")
 function downloadCard(){
 if(!previewImg.src){alert("اختر قالب");return}
 
-html2canvas(preview,{scale:1}).then(c=>{
+html2canvas(preview,{scale:2}).then(c=>{
 let a=document.createElement("a")
-a.download="card.png"
-a.href=c.toDataURL()
+a.download="snap-story-card.png"
+a.href=c.toDataURL("image/png")
 a.click()
 })
 }
